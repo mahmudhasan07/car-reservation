@@ -9,6 +9,7 @@ import {
   Link,
 } from "react-router-dom";
 import Watch from './Components/Watch.jsx';
+import Invoice from './Components/Invoice.jsx';
 
 const router = createBrowserRouter ([
     {
@@ -17,7 +18,7 @@ const router = createBrowserRouter ([
     },
     {
       path : "/watches",
-      element: <Watch></Watch>
+      element: <Invoice></Invoice>
     }
   ])
 

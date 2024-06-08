@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import './App.css'
 import Additional_Charge from './Components/Additional_Charge'
 import Charge from './Components/Charge'
@@ -6,6 +7,12 @@ import Reservation_Info from './Components/Reservation_Info'
 import Vehicle from './Components/Vehicle'
 
 function App() {
+
+  useEffect(() => {
+    window.addEventListener("load", function (){
+      localStorage.clear()
+    })
+  }, []);
 
 
   return (

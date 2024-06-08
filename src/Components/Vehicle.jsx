@@ -49,13 +49,16 @@ const Vehicle = () => {
             axios.post('http://localhost:5000/rents', postData)
                 .then(res => {
                     console.log(res.data);
-                    if (res?.data.length > 1) {
-                        localStorage.setItem("totalCostOfDay", res.data[0])
-                        localStorage.setItem("totalCostOfWeek", res.data[1])
-                    }
-                    else{
-                        localStorage.setItem('totalCostOfHour', res.data[0])
-                    }
+                    localStorage.setItem("totalCostOfHour", res?.data?.totalCostOfHour)
+                    localStorage.setItem("totalCostOfDay", res?.data?.totalCostOfDay)
+                    localStorage.setItem("totalCostOfWeek", res?.data?.totalCostOfWeek)
+                    localStorage.setItem("weekly", res?.data?.weekly)
+                    localStorage.setItem("day", res?.data?.day)
+                    localStorage.setItem("week", res?.data?.week)
+                    localStorage.setItem("hour", res?.data?.hour)
+                    localStorage.setItem("hourly", res?.data?.hourly)
+                    localStorage.setItem("daily", res?.data?.daily)
+
                 })
                 .catch(error => {
                     console.log(error);
