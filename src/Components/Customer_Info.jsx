@@ -8,7 +8,7 @@ const Customer_Info = () => {
     const [number, setNumber] = useState('');
 
     useEffect(() => {
-        console.log(firstName, lastName, email, number);
+        // console.log(firstName, lastName, email, number);
         if (firstName, lastName, email, number) {
             localStorage.setItem("name", firstName + " " +lastName)
             localStorage.setItem("email", email)

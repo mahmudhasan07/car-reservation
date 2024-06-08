@@ -12,17 +12,23 @@ const Reservation_Info = () => {
         // console.log();
         if (newPickup.getDate() == newReturn_Date.getDate()) {
             // console.log("same");
+            const hour = (newReturn_Date.getTime() - newPickup.getTime()) / (1000 * 60 * 60)
             setDuration(`${(newReturn_Date.getTime() - newPickup.getTime()) / (1000 * 60 * 60)}hr`)
+            localStorage.setItem("pickup_time", newPickup)
+            localStorage.setItem("return_time", newReturn_Date)
+            localStorage.setItem("duration_hour", hour)
+
         }
         else {
             const totalTime = (newReturn_Date.getTime() - newPickup.getTime()) / (1000 * 60 * 60 * 24)
             if (totalTime > 6) {
-                const weak = parseInt(totalTime / 7);
+                const week = parseInt(totalTime / 7);
                 const days = parseInt(Math.max(totalTime % 7))
-                setDuration(`${weak}weak, ${days}day`)
+                setDuration(`${week}week, ${days}day`)
                 localStorage.setItem("pickup_time", newPickup)
                 localStorage.setItem("return_time", newReturn_Date)
-                localStorage.setItem("duration", `${weak}weak, ${days}day`)
+                localStorage.setItem("duration_week", week)
+                localStorage.setItem("duration_day", days)
 
             }
         }
