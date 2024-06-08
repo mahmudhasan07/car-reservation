@@ -1,33 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Additional_Charge from './Components/Additional_Charge'
+import Charge from './Components/Charge'
+import Customer_Info from './Components/Customer_Info'
+import Reservation_Info from './Components/Reservation_Info'
+import Vehicle from './Components/Vehicle'
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className='flex justify-around'>
+        <h1 className='text-3xl font-semibold'>Reservation</h1>
+        <button className='btn'>Print / Download</button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className='grid grid-cols-3'>
+        <Reservation_Info></Reservation_Info>
+        <Customer_Info></Customer_Info>
+        <Charge></Charge>
+        <Vehicle></Vehicle>
+        <Additional_Charge></Additional_Charge>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
