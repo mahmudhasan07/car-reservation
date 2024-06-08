@@ -10,17 +10,21 @@ function App() {
 
   return (
     <>
-      <div className='flex justify-around'>
+    <section className='mx-16 my-5'>
+      <div className='flex justify-between'>
         <h1 className='text-3xl font-semibold'>Reservation</h1>
         <button className='btn'>Print / Download</button>
       </div>
-      <div className='grid grid-cols-3'>
+      <div className='grid my-5 grid-cols-3'>
         <Reservation_Info></Reservation_Info>
         <Customer_Info></Customer_Info>
         <Charge></Charge>
+        </div>
+        <div className='grid grid-cols-3'> 
         <Vehicle></Vehicle>
         <Additional_Charge></Additional_Charge>
       </div>
+      </section>
     </>
   )
 }

@@ -1,6 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Reservation_Info = () => {
+
+    const [pickup, setPickup] = useState("");
+    const [return_Date, setReturn] = useState("");
+    const [duration, setDuration] = useState("");
+
+    useEffect(() => {
+        const newPickup = new Date(pickup)
+        const newReturn_Date = new Date(return_Date)
+        // console.log();
+        if (newPickup.getDate() == newReturn_Date.getDate()) {
+            // console.log("same");
+            setDuration(`${(newReturn_Date.getTime() - newPickup.getTime()) / (1000 * 60 * 60)}hr`)
+        }
+        else {
+            const totalTime = (newReturn_Date.getTime() - newPickup.getTime()) / (1000 * 60 * 60 * 24)
+            if (totalTime > 6) {
+                const weak = parseInt(totalTime / 7);
+                const days = parseInt(Math.max(totalTime % 7))
+                setDuration(`${weak}weak, ${days}day`)
+                localStorage.setItem("pickup_time", newPickup)
+                localStorage.setItem("return_time", newReturn_Date)
+                localStorage.setItem("duration", `${weak}weak, ${days}day`)
+
+            }
+        }
+
+    }, [pickup, return_Date]);
+
+    // console.log(duration);
+
     return (
         <section className='w-fit h-fit'>
             <h1 className='font-semibold text-lg'>Reservation Details</h1>
@@ -12,15 +42,15 @@ const Reservation_Info = () => {
                 </div>
                 <div className='p-2'>
                     <label className='text-base'>Pickup Date <span className='text-red-600 font-bold text-lg'>*</span></label> <br />
-                    <input type="date" className='border-2 p-1 w-72 rounded-lg' />
+                    <input onChange={(e) => setPickup(e.target.value)} type="datetime-local" className='border-2 p-1 w-72 rounded-lg' />
                 </div>
                 <div className='p-2'>
                     <label className='text-base'>Return Date <span className='text-red-600 font-bold text-lg'>*</span></label> <br />
-                    <input type="date" className='border-2 p-1 w-72 rounded-lg' />
+                    <input onChange={(e) => setReturn(e.target.value)} type="datetime-local" className='border-2 p-1 w-72 rounded-lg' />
                 </div>
                 <div className='p-2 flex justify-between'>
-                    <label className='text-base'>Duration</label> 
-                    <input type="text" className='border-2 p-1 rounded-lg' />
+                    <label className='text-base'>Duration</label>
+                    <input type="text" value={duration} readOnly className='border-2 p-1 rounded-lg' />
                 </div>
                 <div className='p-2'>
                     <label className='text-base'>Discount</label> <br />
