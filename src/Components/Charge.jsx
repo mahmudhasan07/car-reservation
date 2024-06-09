@@ -14,15 +14,24 @@ const Charge = () => {
 
 
     useEffect(() => {
-        sethours(localStorage.getItem("hour"))
-        setdays(localStorage.getItem("day") || localStorage.getItem("day"))
-        setweeks(localStorage.getItem("week"))
-        settotalCostOfHour(localStorage.getItem("totalCostOfHour"))
-        settotalCostOfDay(localStorage.getItem("totalCostOfDay") || localStorage.getItem("daily"))
-        settotalCostOfWeek(localStorage.getItem("totalCostOfWeek") || localStorage.getItem("weekly"))
-        sethourly(localStorage.getItem("hourly"))
-        setdaily(localStorage.getItem("daily"))
-        setweekly(localStorage.getItem("weekly"))
+        const type1 = localStorage.getItem("hour")
+        sethours(type1)
+        const type2 = localStorage.getItem("day") || localStorage.getItem("day")
+        setdays(type2)
+        const type3 = localStorage.getItem("week")
+        setweeks(type3)
+        const type4 = localStorage.getItem("totalCostOfHour")
+        settotalCostOfHour(type4)
+        const type5 = localStorage.getItem("totalCostOfDay") || localStorage.getItem("daily")
+        settotalCostOfDay(type5)
+        const type6 = localStorage.getItem("totalCostOfWeek") || localStorage.getItem("weekly")
+        settotalCostOfWeek(type6)
+        const type7 = localStorage.getItem("hourly")
+        sethourly(type7)
+        const type8 = localStorage.getItem("daily")
+        setdaily(type8)
+        const type9 = localStorage.getItem("weekly")
+        setweekly(type9)
     }, []);
 
     return (
@@ -59,9 +68,9 @@ const Charge = () => {
                             {
                                 days ?
                                     <>
-                                        <td>{days != "undefined" ?  "Days": ""}</td>
+                                        <td>{days != "undefined" ? "Days" : ""}</td>
                                         <td>{days != "undefined" ? days : ""}</td>
-                                        <td>{daily != "undefined" ? daily: ""}</td>
+                                        <td>{daily != "undefined" ? daily : ""}</td>
                                         <td>{totalCostOfDay != "undefined" ? totalCostOfDay : ""}</td></>
                                     :
                                     ""
@@ -72,8 +81,8 @@ const Charge = () => {
                             {
                                 weeks ?
                                     <>
-                                        <td>{weeks != "undefined"  ? "Weeks": ""}</td>
-                                        <td>{weeks != "undefined"  ? weeks : ""}</td>
+                                        <td>{weeks != "undefined" ? "Weeks" : ""}</td>
+                                        <td>{weeks != "undefined" ? weeks : ""}</td>
                                         <td>{weekly != "undefined" ? weekly : ""}</td>
                                         <td>{totalCostOfWeek != "undefined" ? totalCostOfWeek : ""}</td></>
                                     :

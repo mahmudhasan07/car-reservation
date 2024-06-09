@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import logo from "../../public/logo.png"
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 const Invoice = () => {
     const [hours, sethours] = useState("")
@@ -25,8 +27,23 @@ const Invoice = () => {
         setweekly(localStorage.getItem("weekly"))
     }, []);
 
+    const handleDownload = () => {
+        const input = document.querySelector("#download_part");
+        // Specify the id of the element you want to convert to PDF
+        html2canvas(input).then((canvas) => {
+            const imgData = canvas.toDataURL('image/png');
+            const doc = new jsPDF('p', 'mm', 'a4');
+            const componentWidth = doc.internal.pageSize.getWidth();
+            const componentHeight = doc.internal.pageSize.getHeight();
+            doc.addImage(imgData, 'PNG', 0, 0, componentWidth, componentHeight);
+            doc.save('downloaded-file.pdf');
+            console.log("pdf");
+        })
+    }
+
     return (
-        <section className='flex mx-16 my-10'>
+        <section id='download_part' className='flex mx-16 my-10'>
+            <button onClick={handleDownload} className='btn'>Hello</button>
             <div className='flex-1'>
                 <div>
                     <div className='flex justify-around'>
@@ -73,7 +90,7 @@ const Invoice = () => {
                             <p>NOTICE : Collision Insurance (CDW) - $7 per day</p>
                             <p>Limits liability of damages to one's own vehicle up to $1000 in event of accident</p>
                             <p>by waiving this coverage renter agrees to be hold liable for damage</p>
-                            <div className='flex justify-around'>
+                            <div className='flex justify-around my-5'>
                                 <p>Accept</p>
                                 <p>Reject</p>
                             </div>

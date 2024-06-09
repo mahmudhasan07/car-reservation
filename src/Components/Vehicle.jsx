@@ -46,7 +46,7 @@ const Vehicle = () => {
             const rate = pickCar[0].rates
             const postData = { duration_week, duration_day, duration_hour, rate }
             console.log(postData);
-            axios.post('http://localhost:5000/rents', postData)
+            axios.post('https://file-backen.vercel.app/rents', postData)
                 .then(res => {
                     console.log(res.data);
                     localStorage.setItem("totalCostOfHour", res?.data?.totalCostOfHour)
