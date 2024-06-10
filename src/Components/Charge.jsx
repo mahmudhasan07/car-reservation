@@ -14,23 +14,23 @@ const Charge = () => {
 
 
     useEffect(() => {
-        const type1 = localStorage.getItem("hour")
+        const type1 = window.localStorage.getItem("hour")
         sethours(type1)
-        const type2 = localStorage.getItem("day") || localStorage.getItem("day")
+        const type2 = window.localStorage.getItem("day") || window.localStorage.getItem("day")
         setdays(type2)
-        const type3 = localStorage.getItem("week")
+        const type3 = window.localStorage.getItem("week")
         setweeks(type3)
-        const type4 = localStorage.getItem("totalCostOfHour")
+        const type4 = window.localStorage.getItem("totalCostOfHour")
         settotalCostOfHour(type4)
-        const type5 = localStorage.getItem("totalCostOfDay") || localStorage.getItem("daily")
+        const type5 = window.localStorage.getItem("totalCostOfDay") || window.localStorage.getItem("daily")
         settotalCostOfDay(type5)
-        const type6 = localStorage.getItem("totalCostOfWeek") || localStorage.getItem("weekly")
+        const type6 = window.localStorage.getItem("totalCostOfWeek") || window.localStorage.getItem("weekly")
         settotalCostOfWeek(type6)
-        const type7 = localStorage.getItem("hourly")
+        const type7 = window.localStorage.getItem("hourly")
         sethourly(type7)
-        const type8 = localStorage.getItem("daily")
+        const type8 = window.localStorage.getItem("daily")
         setdaily(type8)
-        const type9 = localStorage.getItem("weekly")
+        const type9 = window.localStorage.getItem("weekly")
         setweekly(type9)
     }, []);
 

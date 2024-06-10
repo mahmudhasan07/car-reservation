@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import logo from "../../public/logo.png"
+import * as React from "react";
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
-const Invoice = () => {
+const Invoice = ({condition}) => {
     const [hours, sethours] = useState("")
     const [days, setdays] = useState("");
     const [weeks, setweeks] = useState();
@@ -25,24 +26,38 @@ const Invoice = () => {
         sethourly(localStorage.getItem("hourly"))
         setdaily(localStorage.getItem("daily"))
         setweekly(localStorage.getItem("weekly"))
+
+        
     }, []);
 
+    // useReactToPrint({})
+    // if(condition == true){
+    //     document.addEventListener("click", function (){
+    //         useReactToPrint({
+    //             con
+    //         })
+    //     })
+    // }
+    if(condition == true){
+        window.print()
+    }
+
     const handleDownload = () => {
-        const input = document.querySelector("#download_part");
-        // Specify the id of the element you want to convert to PDF
-        html2canvas(input).then((canvas) => {
-            const imgData = canvas.toDataURL('image/png');
-            const doc = new jsPDF('p', 'mm', 'a4');
-            const componentWidth = doc.internal.pageSize.getWidth();
-            const componentHeight = doc.internal.pageSize.getHeight();
-            doc.addImage(imgData, 'PNG', 0, 0, componentWidth, componentHeight);
-            doc.save('downloaded-file.pdf');
-            console.log("pdf");
-        })
+        // const input = document.querySelector("#download_part");
+        // // Specify the id of the element you want to convert to PDF
+        // html2canvas(input).then((canvas) => {
+        //     const imgData = canvas.toDataURL('image/png');
+        //     const doc = new jsPDF('p', 'mm', 'a4');
+        //     const componentWidth = doc.internal.pageSize.getWidth();
+        //     const componentHeight = doc.internal.pageSize.getHeight();
+        //     doc.addImage(imgData, 'PNG', 0, 0, componentWidth, componentHeight);
+        //     doc.save('downloaded-file.pdf');
+        //     console.log("pdf");
+        // })
     }
 
     return (
-        <section id='download_part' className='flex mx-16 my-10'>
+        <section id='download_part'  className='flex mx-16 my-10'>
             <button onClick={handleDownload} className='btn'>Hello</button>
             <div className='flex-1'>
                 <div>

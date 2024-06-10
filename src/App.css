@@ -1,0 +1,10 @@
+@media print{
+    body{
+        visibility: hidden;
+        /* display: none; */
+    }
+    #download_part{
+        visibility: visible;
+        display: block;
+    }
+}
