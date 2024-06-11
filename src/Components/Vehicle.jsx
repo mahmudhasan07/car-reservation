@@ -69,12 +69,7 @@ const Vehicle = ({setloading}) => {
         }
 
 
-        // console.log(name,email,phone,pickup_time, return_time,duration);
-
-
     }, [carModel, type, cars]);
-
-    // console.log(types_array);
 
     return (
         <section id='vehicle' className='w-fit h-fit'>

@@ -83,7 +83,7 @@ const Invoice = ({ condition }) => {
     }
 
     return (
-        <section id='download_part' className='flex  justify-center text-sm text-black bg-white'>
+        <section id='download_part' className='flex justify-around gap-10 text-black bg-white'>
             <div className=' w-1/2'>
             {/* <button onClick={handleDownload} className='btn'>Hello</button> */}
                 <div>
