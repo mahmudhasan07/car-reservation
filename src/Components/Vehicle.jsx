@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios"
 
-const Vehicle = () => {
+const Vehicle = ({setloading}) => {
 
     const [types_array, setTypes] = useState()
 
@@ -58,6 +58,8 @@ const Vehicle = () => {
                     localStorage.setItem("hour", res?.data?.hour)
                     localStorage.setItem("hourly", res?.data?.hourly)
                     localStorage.setItem("daily", res?.data?.daily)
+                    setloading(true)
+                    
 
                 })
                 .catch(error => {
@@ -75,7 +77,7 @@ const Vehicle = () => {
     // console.log(types_array);
 
     return (
-        <section className='w-fit h-fit'>
+        <section id='vehicle' className='w-fit h-fit'>
             <h1 className='font-semibold text-lg'>Vehicle Information</h1>
             <hr className='my-2 border-2 rounded-xl border-[#5D5CFF]' />
             <div className='border-2 rounded-xl p-2'>

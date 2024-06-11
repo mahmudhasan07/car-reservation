@@ -15,11 +15,12 @@ import { useReactToPrint } from "react-to-print";
 function App() {
 
   const [condition, setcondition] = useState(false);
+  const [loading, setloading] = useState(false);
   // const componentRef = useRef()
 
   useEffect(() => {
     window.addEventListener("load", function () {
-      localStorage.clear()
+      // localStorage.clear()
     })
   }, []);
   // const componentRef = useRef()
@@ -65,6 +66,11 @@ function App() {
   // const components = document.getElementById("download_part")
 
 
+  const handleLoadingn = ()=>{
+    
+  }
+
+
   return (
     <>
       <section id='Hello_part' className='mx-16 my-5'>
@@ -75,8 +81,8 @@ function App() {
         <div className='grid my-5 gap-3 grid-cols-3'>
           <Reservation_Info></Reservation_Info>
           <Customer_Info></Customer_Info>
-          <Charge></Charge>
-          <Vehicle></Vehicle>
+          <Charge loading={loading}></Charge>
+          <Vehicle setloading={setloading}></Vehicle>
           <Additional_Charge></Additional_Charge>
         </div>
         <div >

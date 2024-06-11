@@ -3,8 +3,31 @@
         visibility: hidden;
         /* display: none; */
     }
+    #additional_charge{
+        visibility: hidden;
+        display: none;
+    }
+    #charge{
+        visibility: hidden;
+        display: none;
+    }
+    #customer_info{
+        visibility: hidden;
+        display: none;
+    }
+    #reservation_info{
+        visibility: hidden;
+        display: none;
+
+    }
+    #vehicle{
+        visibility: hidden;
+        display: none;
+    }
     #download_part{
         visibility: visible;
-        display: block;
+        gap: 10px;
+        margin: 0;
+        /* display: block; */
     }
 }

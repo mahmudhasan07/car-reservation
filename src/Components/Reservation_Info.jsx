@@ -9,7 +9,7 @@ const Reservation_Info = () => {
     useEffect(() => {
         const newPickup = new Date(pickup)
         const newReturn_Date = new Date(return_Date)
-        // console.log();
+        // console.log(newPickup.getDate(),newReturn_Date.getDate());
         if (newPickup.getDate() == newReturn_Date.getDate()) {
             // console.log("same");
             const hour = (newReturn_Date.getTime() - newPickup.getTime()) / (1000 * 60 * 60)
@@ -17,13 +17,16 @@ const Reservation_Info = () => {
             localStorage.setItem("pickup_time", newPickup)
             localStorage.setItem("return_time", newReturn_Date)
             localStorage.setItem("duration_hour", hour)
+            // console.log(hour);
 
         }
         else {
             const totalTime = (newReturn_Date.getTime() - newPickup.getTime()) / (1000 * 60 * 60 * 24)
+            // console.log(totalTime);
             if (totalTime > 6) {
                 const week = parseInt(totalTime / 7);
                 const days = parseInt(Math.max(totalTime % 7))
+                console.log(week,days);
                 setDuration(`${week}week, ${days}day`)
                 localStorage.setItem("pickup_time", newPickup)
                 localStorage.setItem("return_time", newReturn_Date)
@@ -38,7 +41,7 @@ const Reservation_Info = () => {
     // console.log(duration);
 
     return (
-        <section className='w-fit h-fit'>
+        <section id='reservation_info' className='w-fit h-fit'>
             <h1 className='font-semibold text-lg'>Reservation Details</h1>
             <hr className='my-2 border-2 rounded-xl border-[#5D5CFF]' />
             <div className='border-2 rounded-xl '>

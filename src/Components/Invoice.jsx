@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import logo from "../../public/logo.png"
-import * as React from "react";
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import * as htmlToImage from 'html-to-image';
 
-const Invoice = ({condition}) => {
+const Invoice = ({ condition }) => {
     const [hours, sethours] = useState("")
     const [days, setdays] = useState("");
     const [weeks, setweeks] = useState();
@@ -27,7 +27,7 @@ const Invoice = ({condition}) => {
         setdaily(localStorage.getItem("daily"))
         setweekly(localStorage.getItem("weekly"))
 
-        
+
     }, []);
 
     // useReactToPrint({})
@@ -38,8 +38,22 @@ const Invoice = ({condition}) => {
     //         })
     //     })
     // }
-    if(condition == true){
-        window.print()
+    if (condition == true) {
+        const input = document.querySelector("#download_part");
+        // Specify the id of the element you want to convert to PDF
+        // html2canvas(input).then((canvas) => {
+        //     console.log(canvas);
+        //     const imgData = canvas.toDataURL('image/png');
+        //     console.log(imgData);
+        //     const doc = new jsPDF('p', 'mm', 'a4');
+        //     const componentWidth = doc.internal.pageSize.getWidth();
+        //     const componentHeight = doc.internal.pageSize.getHeight();
+        //     doc.addImage(imgData, 'PNG', 0, 0, componentWidth, componentHeight);
+        //     doc.save('downloaded-file.pdf');
+        //     console.log("pdf");
+        // })
+        // window.print(document.querySelector("#download_part"))
+        
     }
 
     const handleDownload = () => {
@@ -54,14 +68,26 @@ const Invoice = ({condition}) => {
         //     doc.save('downloaded-file.pdf');
         //     console.log("pdf");
         // })
+        // html2canvas(document.getElementById("download_part"),{ backgroundColor: "#FFFFFF", color : "black"}).then(canvas => {
+        //     console.log(canvas);
+        //     canvas.style.display = 'none'
+        //     const data = canvas.toDataURL('png')
+        //     console.log(data);
+        // });
+
+        htmlToImage.toJpeg(document.getElementById('my-node'))
+  .then(function (dataUrl) {
+    console.log(dataUrl);
+  });
+
     }
 
     return (
-        <section id='download_part'  className='flex mx-16 my-10'>
-            <button onClick={handleDownload} className='btn'>Hello</button>
-            <div className='flex-1'>
+        <section id='download_part' className='flex  justify-center text-sm text-black bg-white'>
+            <div className=' w-1/2'>
+            {/* <button onClick={handleDownload} className='btn'>Hello</button> */}
                 <div>
-                    <div className='flex justify-around'>
+                    <div className='flex justify-between'>
                         <img src={logo} className='w-20' alt="" />
                         <div>
                             <p>CH Car Place Inc</p>
@@ -70,7 +96,7 @@ const Invoice = ({condition}) => {
                         </div>
                     </div>
 
-                    <div className='flex justify-around'>
+                    <div className='flex gap-1 justify-between'>
                         <div>
                             <h1 className='text-xl font-bold'>RENTER INFO</h1>
                             <p>name</p>
@@ -117,21 +143,21 @@ const Invoice = ({condition}) => {
                     </div>
                 </div>
             </div>
-            <div className='flex-1'>
+            <div className=' w-1/2'>
                 <div>
                     <h1>Reservation {""}</h1>
                     <h1>REPAIR ORDER:</h1>
                     <div>
                         <h1>CLAIM:</h1>
-                        <p>{ }</p>
-                        <p>{ }</p>
+                        <p>{"" }</p>
+                        <p>{ ""}</p>
                     </div>
                 </div>
                 <div>
                     <h1 className='font-semibold text-lg'>Charges Summary</h1>
                     <hr className='my-2 border-2 rounded-xl border-[#5D5CFF]' />
                     <div className="overflow-x-auto bg-[#DFDFFF] text-black">
-                        <table className="table w-[500px] ">
+                        <table className="table w-[300px] ">
                             {/* head */}
                             <thead>
                                 <tr>

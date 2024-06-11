@@ -18,7 +18,7 @@ const Customer_Info = () => {
     }, [firstName, lastName, email, number]);
 
     return (
-        <section className='w-fit h-fit '>
+        <section id='customer_info' className='w-fit h-fit '>
             <h1 className='font-semibold text-lg'>Customer Information</h1>
             <hr className='my-2 border-2 rounded-xl border-[#5D5CFF]' />
             <div className='border-2 space-y-2 p-2 rounded-xl'>
