@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from "axios"
+import { Context } from './ContextAPI';
 
-const Vehicle = ({setloading}) => {
+const Vehicle = () => {
+    const { loading, setloading } = useContext(Context)
 
     const [types_array, setTypes] = useState()
 
@@ -45,10 +47,10 @@ const Vehicle = ({setloading}) => {
             // console.log(pickCar[0].rates);
             const rate = pickCar[0].rates
             const postData = { duration_week, duration_day, duration_hour, rate }
-            console.log(postData);
+            // console.log(postData);
             axios.post('https://file-backen.vercel.app/rents', postData)
                 .then(res => {
-                    console.log(res.data);
+                    // console.log(res.data);
                     localStorage.setItem("totalCostOfHour", res?.data?.totalCostOfHour)
                     localStorage.setItem("totalCostOfDay", res?.data?.totalCostOfDay)
                     localStorage.setItem("totalCostOfWeek", res?.data?.totalCostOfWeek)
@@ -69,7 +71,7 @@ const Vehicle = ({setloading}) => {
         }
 
 
-    }, [carModel, type, cars]);
+    }, [carModel, type, cars,setloading]);
 
     return (
         <section id='vehicle' className='w-fit h-fit'>

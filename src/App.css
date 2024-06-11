@@ -26,8 +26,13 @@
     }
     #download_part{
         visibility: visible;
+        display: flex;
         gap: 10px;
         margin: 0;
         /* display: block; */
     }
+}
+
+#download_part{
+    /* visibility: hidden; */
 }

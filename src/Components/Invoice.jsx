@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import logo from "../../public/logo.png"
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
-import * as htmlToImage from 'html-to-image';
+import { Context } from './ContextAPI';
 
-const Invoice = ({ condition }) => {
+
+const Invoice = () => {
+    const { loading, setloading } = useContext(Context)
     const [hours, sethours] = useState("")
     const [days, setdays] = useState("");
     const [weeks, setweeks] = useState();
@@ -17,70 +17,28 @@ const Invoice = ({ condition }) => {
 
 
     useEffect(() => {
-        sethours(localStorage.getItem("hour"))
-        setdays(localStorage.getItem("day") || localStorage.getItem("day"))
-        setweeks(localStorage.getItem("week"))
-        settotalCostOfHour(localStorage.getItem("totalCostOfHour"))
-        settotalCostOfDay(localStorage.getItem("totalCostOfDay") || localStorage.getItem("daily"))
-        settotalCostOfWeek(localStorage.getItem("totalCostOfWeek") || localStorage.getItem("weekly"))
-        sethourly(localStorage.getItem("hourly"))
-        setdaily(localStorage.getItem("daily"))
-        setweekly(localStorage.getItem("weekly"))
-
-
-    }, []);
-
-    // useReactToPrint({})
-    // if(condition == true){
-    //     document.addEventListener("click", function (){
-    //         useReactToPrint({
-    //             con
-    //         })
-    //     })
-    // }
-    if (condition == true) {
-        const input = document.querySelector("#download_part");
-        // Specify the id of the element you want to convert to PDF
-        // html2canvas(input).then((canvas) => {
-        //     console.log(canvas);
-        //     const imgData = canvas.toDataURL('image/png');
-        //     console.log(imgData);
-        //     const doc = new jsPDF('p', 'mm', 'a4');
-        //     const componentWidth = doc.internal.pageSize.getWidth();
-        //     const componentHeight = doc.internal.pageSize.getHeight();
-        //     doc.addImage(imgData, 'PNG', 0, 0, componentWidth, componentHeight);
-        //     doc.save('downloaded-file.pdf');
-        //     console.log("pdf");
-        // })
-        // window.print(document.querySelector("#download_part"))
-        
-    }
-
-    const handleDownload = () => {
-        // const input = document.querySelector("#download_part");
-        // // Specify the id of the element you want to convert to PDF
-        // html2canvas(input).then((canvas) => {
-        //     const imgData = canvas.toDataURL('image/png');
-        //     const doc = new jsPDF('p', 'mm', 'a4');
-        //     const componentWidth = doc.internal.pageSize.getWidth();
-        //     const componentHeight = doc.internal.pageSize.getHeight();
-        //     doc.addImage(imgData, 'PNG', 0, 0, componentWidth, componentHeight);
-        //     doc.save('downloaded-file.pdf');
-        //     console.log("pdf");
-        // })
-        // html2canvas(document.getElementById("download_part"),{ backgroundColor: "#FFFFFF", color : "black"}).then(canvas => {
-        //     console.log(canvas);
-        //     canvas.style.display = 'none'
-        //     const data = canvas.toDataURL('png')
-        //     console.log(data);
-        // });
-
-        htmlToImage.toJpeg(document.getElementById('my-node'))
-  .then(function (dataUrl) {
-    console.log(dataUrl);
-  });
-
-    }
+        if (loading == true) {
+            const type1 = localStorage.getItem("hour")
+            sethours(type1)
+            const type2 = localStorage.getItem("day")
+            setdays(type2)
+            const type3 = localStorage.getItem("week")
+            setweeks(type3)
+            const type4 = localStorage.getItem("totalCostOfHour")
+            settotalCostOfHour(type4)
+            const type5 = localStorage.getItem("totalCostOfDay")
+            settotalCostOfDay(type5)
+            const type6 = localStorage.getItem("totalCostOfWeek")
+            settotalCostOfWeek(type6)
+            const type7 = localStorage.getItem("hourly")
+            sethourly(type7)
+            const type8 = localStorage.getItem("daily")
+            setdaily(type8)
+            const type9 = localStorage.getItem("weekly")
+            setweekly(type9)
+            setloading(false)
+        }
+    }, [days, weeks, hours,loading,setloading]);
 
     return (
         <section id='download_part' className='flex justify-around gap-10 text-black bg-white'>

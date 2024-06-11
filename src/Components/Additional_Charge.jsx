@@ -17,7 +17,7 @@ const Additional_Charge = () => {
     // console.log(tax);
     return (
         <section id='additional_charge' className='w-fit h-fit -mt-16'>
-             <h1 className='font-semibold text-lg'>Additional Charges</h1>
+             <h1 className='font-semibold text-'>Additional Charges</h1>
              <hr className='my-2 border-2 rounded-xl border-[#5D5CFF]' />
              <div className='text-base'>
                 <div className='border-2 rounded-xl space-y-4 p-2'>
